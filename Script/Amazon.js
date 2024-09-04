@@ -81,12 +81,12 @@ document.querySelectorAll('.Js-add-to-cart-button').forEach((button) =>{
         }
 
         let cartQauntity = 0;
+
         cart.forEach((item) =>{
             cartQauntity += item.Quantity;
         });
 
-        
-        console.log(cart);
+        document.querySelector('.Js-cart-quantity').innerHTML = cartQauntity;
         
     });
 });
