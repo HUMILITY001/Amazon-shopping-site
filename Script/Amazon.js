@@ -63,7 +63,7 @@ products.forEach((products) => {
 
 
 
-function updateCartQuatity() {
+export function updateCartQuatity() {
 
     let cartQauntity = 0;
 
@@ -72,7 +72,10 @@ function updateCartQuatity() {
         });
 
         document.querySelector('.Js-cart-quantity').innerHTML = cartQauntity;
+
 }
+
+window.addEventListener('load', updateCartQuatity);
 
 
 document.querySelector('.Js-product-grid').innerHTML = productHtml;
