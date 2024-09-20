@@ -6,6 +6,8 @@ import{formatCurrency} from '../utils/money.js';
 
 import {deliveryOptions, getDeliveryOption} from '../utils/DeliveryOption.js';
 
+import {renderPaymentSummary} from './paymentSummary.js '
+
 
 export function renderOrderSummary(){
   let cartSummaryHTML = '';
@@ -134,8 +136,8 @@ cart.forEach((cartItem) =>{
       console.log(container)
 
       container.remove();
-
-      updateCheckoutHeader()
+      renderPaymentSummary();
+      updateCheckoutHeader();
 
     });
   });
@@ -146,6 +148,7 @@ cart.forEach((cartItem) =>{
       const deliveryOptionId = element.dataset.deliveryOptionId;
       updateDeliveryOption (productId, deliveryOptionId);
       renderOrderSummary();
+      renderPaymentSummary();
     });
   });
 }
