@@ -1,4 +1,4 @@
-import {cart, removeFromCart} from '../data/cart.js';
+import {cart, removeFromCart, updateDeliveryOption} from '../data/cart.js';
 
 import{products} from '../data/products.js';
 
@@ -109,7 +109,10 @@ function deliveryOptionHTML(matchingProduct, cartItem){
     const ischecked = deliveryOption.id === cartItem.deliveryOptionId;
 
     html +=`
-      <div class="delivery-option">
+      <div class="delivery-option  js-delivery-option"
+      data-product-id = ${matchingProduct.id}
+      data-delivery-option-id = ${deliveryOption.id}
+      >
         <input type="radio"
 
         ${ischecked ? 'checked' : ''}
@@ -146,5 +149,13 @@ document.querySelectorAll('.js-delete-link').forEach((link) => {
 
     updateCheckoutHeader()
 
+  });
+});
+
+document.querySelectorAll('.js-delivery-option').forEach((element)=>{
+  element.addEventListener('click', ()=>{
+    const productId = element.dataset.productId;
+    const deliveryOptionId = element.dataset.deliveryOptionId;
+    updateDeliveryOption (productId, deliveryOptionId);
   });
 });
